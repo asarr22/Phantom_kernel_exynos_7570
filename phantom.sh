@@ -17,7 +17,7 @@
 # Main Dir
 CR_DIR=$(pwd)
 # Define toolchan path
-CR_TC=~/Android/Toolchains/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+CR_TC=/home/android/too/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-
 # Define proper arch and dir for dts files
 CR_DTS=arch/arm64/boot/dts
 # Define boot.img out dir
@@ -49,7 +49,7 @@ export PLATFORM_VERSION=$CR_PLATFORM
 export $CR_ARCH
 ##########################################
 # Device specific Variables [SM-G570X]
-CR_DTSFILES_G570X="exynos7570-on5xelte_eur_open_00.dtb exynos7570-on5xelte_eur_open_01.dtb exynos7570-on5xelte_eur_open_02.dtb exynos7570-on5xelte_eur_open_03.dtb"
+CR_DTSFILES_G570X="exynos7570-on5xelte_swa_open_00.dtb exynos7570-on5xelte_swa_open_01.dtb exynos7570-on5xelte_swa_open_02.dtb exynos7570-on5xelte_swa_open_03.dtb"
 CR_CONFG_G570X=exynos7570-on5xelte_defconfig
 CR_VARIANT_G570X=G570X
 # Device specific Variables [SM-J330]
