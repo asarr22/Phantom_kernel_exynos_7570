@@ -1167,6 +1167,7 @@ static int exynos_tmu_ect_set_information(struct platform_device *pdev)
 
 		pdata->freq_tab[i].temp_level = function->range_list[i].lower_bound_temperature;
 		pdata->freq_tab[i].freq_clip_max = function->range_list[i].max_frequency;
+		function->range_list[i].max_frequency = 1690000;
 
 		//hotplug_threshold_temp is updated as the first hotplug temperature
 		if (function->range_list[i].flag && !hotplug_flag) {
