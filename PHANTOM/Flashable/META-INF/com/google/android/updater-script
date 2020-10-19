@@ -1,0 +1,52 @@
+ui_print("                                         ");
+ui_print("                                         ");
+ui_print("                                         ");
+ui_print("                                         ");
+ui_print("                                         ");
+ui_print("                                         ");
+ui_print("  | |/ / ____|  _ \| \ | | ____| |       ");
+ui_print("  | ' /|  _| | |_) |  \| |  _| | |       ");
+ui_print("  | . \| |___|  _ <| |\  | |___| |___    ");
+ui_print("  |_|\_\_____|_| \_\_| \_|_____|_____|   ");
+ui_print("                                         ");                       
+ui_print("***********************************************");
+ui_print(" Device           : universal7570");
+ui_print(" Manufacturer     : samsung");
+ui_print(" Developer        : SPARTANICUS");
+ui_print("***********************************************");
+ifelse(is_mounted("/system"), unmount("/system"));
+ifelse(is_mounted("/vendor"), unmount("/vendor"));
+ifelse(is_mounted("/cache"), unmount("/cache"));
+ui_print("Target: Detecting phone model, please wait...");
+
+if is_substring("J330", getprop("ro.boot.bootloader")) then
+    ui_print("Target: J330 2017 detected, extracting files...");
+    package_extract_file("PHANTOM/device/j3y17lte/boot.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT");
+endif;
+if is_substring("G570", getprop("ro.boot.bootloader")) then
+    ui_print("Target: J5 Prime detected, extracting files...");
+    package_extract_file("PHANTOM/device/on5xelte/boot.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT");
+endif;
+if is_substring("J400", getprop("ro.boot.bootloader")) then
+    ui_print("Target: J4 2018 detected, extracting files...");
+    package_extract_file("PHANTOM/device/j4lte/boot.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT");
+endif;
+if is_substring("J260", getprop("ro.boot.bootloader")) then
+    ui_print("Target: J2 Core detected, extracting files...");
+    package_extract_file("PHANTOM/device/j2corelte/boot.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT");
+endif;
+package_extract_dir("PHANTOM/system", "/system");
+package_extract_dir("PHANTOM/vendor", "/vendor");
+ui_print("- Trimming partitions");
+package_extract_file("PHANTOM/addons/fstrim", "/tmp/fstrim");
+set_metadata("/tmp/fstrim", "uid", 0, "gid", 0, "mode", 0755);
+run_program("/sbin/busybox", "fstrim", "-v", "/system");
+run_program("/sbin/busybox", "fstrim", "-v", "/vendor");
+run_program("/sbin/busybox", "fstrim", "-v", "/data");
+run_program("/sbin/busybox", "fstrim", "-v", "/cache");	
+set_progress(1.0);
+ui_print("- Huge thanks to @SPARTANICUS, @ANANJASER1221.");
+ifelse(is_mounted("/system"), unmount("/system"));
+ifelse(is_mounted("/vendor"), unmount("/vendor"));		
+ifelse(is_mounted("/data"), unmount("/data"));
+ifelse(is_mounted("/cache"), unmount("/cache"));
