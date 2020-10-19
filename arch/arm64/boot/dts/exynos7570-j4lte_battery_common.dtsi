@@ -179,8 +179,8 @@
 		battery,chg_high_temp_1st = <530>;
 		battery,chg_high_temp_2nd = <530>;
 		battery,chg_high_temp_recovery = <525>;
-		battery,chg_charging_limit_current = <1300>;
-		battery,chg_charging_limit_current_2nd = <1300>;
+		battery,chg_charging_limit_current = <2000>;
+		battery,chg_charging_limit_current_2nd = <2050>;
 		battery,chg_skip_check_capacity = <10>;
 		battery,chg_skip_check_time = <600>;
 
