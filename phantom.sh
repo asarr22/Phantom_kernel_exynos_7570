@@ -23,6 +23,11 @@ CR_DTS=arch/arm64/boot/dts
 # Define boot.img out dir
 CR_OUT=$CR_DIR/PHANTOM/Out
 CR_PRODUCT=$CR_DIR/PHANTOM/Product
+# DTS 
+CR_MDTJ5=$CR_DIR/PHANTOM/MakefileJ5
+CR_MDTJ4=$CR_DIR/PHANTOM/MakefileJ4
+CR_MDTJ3=$CR_DIR/PHANTOM/MakefileJ3
+CR_MDTJ2=$CR_DIR/PHANTOM/MakefileJ2
 # Presistant A.I.K Location
 CR_AIK=$CR_DIR/PHANTOM/A.I.K
 # Main Ramdisk Location
@@ -254,6 +259,7 @@ BUILD_OUT()
 
 BUILD_ZIMAGE()
 {
+	cp $CR_COMP $CR_DIR/arch/arm64/boot/dts/Makefile
 	echo "----------------------------------------------"
 	echo " "
 	echo "Building zImage for $CR_VARIANT"
@@ -370,6 +376,7 @@ do
             echo "Starting $CR_VARIANT_G570X kernel build..."
             CR_CONFIG=$CR_CONFG_G570X
             CR_DTSFILES=$CR_DTSFILES_G570X
+            CR_COMP=$CR_MDTJ5
             if [ $CR_MODE = "2" ]; then
               echo " Building AOSP variant "
               CR_CONFIG_USB=$CR_CONFIG_AOSP
@@ -397,6 +404,7 @@ do
             echo "Starting $CR_VARIANT_J330X kernel build..."
             CR_CONFIG=$CR_CONFG_J330X
             CR_DTSFILES=$CR_DTSFILES_J330X
+            CR_COMP=$CR_MDTJ3
             if [ $CR_MODE = "2" ]; then
               echo " Building AOSP variant "
               CR_CONFIG_USB=$CR_CONFIG_AOSP
@@ -423,6 +431,7 @@ do
             clear
             echo "Starting $CR_VARIANT_G390X kernel build..."
             CR_VARIANT=$CR_VARIANT_G390X
+            CR_COMP=$CR_MDTX4
             CR_CONFIG=$CR_CONFG_G390X
             CR_DTSFILES=$CR_DTSFILES_G390X
             if [ $CR_MODE = "2" ]; then
@@ -453,6 +462,7 @@ do
             CR_DTSFILES=$CR_DTSFILES_J400X
             CR_RAMDISK=$CR_RAMDISK
             CR_CONFIG=$CR_CONFG_J400X
+            CR_COMP=$CR_MDTJ4
             export ANDROID_MAJOR_VERSION=$CR_ANDROID
             export PLATFORM_VERSION=$CR_PLATFORM
             if [ $CR_MODE = "2" ]; then
@@ -481,6 +491,7 @@ do
             CR_DTSFILES=$CR_DTSFILES_J260X
             CR_RAMDISK=$CR_RAMDISK
             CR_CONFIG=$CR_CONFG_J260X
+            CR_COMP=$CR_MDTJ52
             export ANDROID_MAJOR_VERSION=$CR_ANDROID
             export PLATFORM_VERSION=$CR_PLATFORM
             if [ $CR_MODE = "2" ]; then
@@ -507,6 +518,7 @@ do
             echo "Starting $CR_VARIANT_G570X kernel build..."
             CR_CONFIG=$CR_CONFG_G570X
             CR_DTSFILES=$CR_DTSFILES_G570X
+            CR_COMP=$CR_MDTJ5
             if [ $CR_MODE = "2" ]; then
               echo " Building AOSP variant "
               CR_CONFIG_USB=$CR_CONFIG_AOSP
@@ -529,6 +541,7 @@ do
             echo "Starting $CR_VARIANT_J330X kernel build..."
             CR_CONFIG=$CR_CONFG_J330X
             CR_DTSFILES=$CR_DTSFILES_J330X
+            CR_COMP=$CR_MDTJ3
             if [ $CR_MODE = "2" ]; then
               echo " Building AOSP variant "
               CR_CONFIG_USB=$CR_CONFIG_AOSP
@@ -548,33 +561,11 @@ do
             BUILD_ROOT
             PACK_FLASHABLE
             BUILD_OUT
-            echo "Starting $CR_VARIANT_G390X kernel build..."
-            CR_VARIANT=$CR_VARIANT_G390X
-            CR_CONFIG=$CR_CONFG_G390X
-            CR_DTSFILES=$CR_DTSFILES_G390X
-            if [ $CR_MODE = "2" ]; then
-              echo " Building AOSP variant "
-              CR_CONFIG_USB=$CR_CONFIG_AOSP
-              CR_VARIANT=$CR_VARIANT_G390X-AOSP
-              CR_RAMDISK=$CR_RAMDISK
-            else
-              echo " Building OneUI variant "
-              CR_CONFIG_USB=$CR_CONFIG_ONEUI
-              CR_VARIANT=$CR_VARIANT_G390X-ONEUI
-              CR_RAMDISK=$CR_RAMDISK
-            fi
-            BUILD_IMAGE_NAME
-            BUILD_GENERATE_CONFIG
-            BUILD_ZIMAGE
-            BUILD_DTB
-            PACK_BOOT_IMG
-            BUILD_ROOT
-            PACK_FLASHABLE
-            BUILD_OUT
             echo "Starting $CR_VARIANT_J400X kernel build..."
             CR_DTSFILES=$CR_DTSFILES_J400X
             CR_RAMDISK=$CR_RAMDISK
             CR_CONFIG=$CR_CONFG_J400X
+            CR_COMP=$CR_MDTJ4
             # Build Oreo WiFi HAL
             export ANDROID_MAJOR_VERSION=$CR_ANDROID
             export PLATFORM_VERSION=$CR_PLATFORM
@@ -599,6 +590,7 @@ do
             CR_DTSFILES=$CR_DTSFILES_J260X
             CR_RAMDISK=$CR_RAMDISK
             CR_CONFIG=$CR_CONFG_J260X
+            CR_COMP=$CR_MDTJ2
             # Build Oreo WiFi HAL
             export ANDROID_MAJOR_VERSION=$CR_ANDROID
             export PLATFORM_VERSION=$CR_PLATFORM
