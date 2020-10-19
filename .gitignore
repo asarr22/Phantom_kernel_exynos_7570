@@ -155,9 +155,10 @@ arch/arm64/boot/boot.img-zImage
 arch/arm64/boot/zImage
 *.img-zImage
 *.img
-PHANTOM/Out/PHANTOMKernel-V3.0-G570X-OneUI-20200425.zip
+PHANTOM/Out
+arch/arm64/boot/dts/Makefile
+arch/arm64/boot/dts/exynos7570-rev01.dtsi
 *.zip
-PHANTOM/
 PHANTOM/A.I.K/authors.txt
 PHANTOM/A.I.K/bin/androidbootimg.magic
 PHANTOM/A.I.K/bin/avb/verity.pk8
@@ -188,6 +189,7 @@ PHANTOM/A.I.K/bin/linux/x86_64/kernel_dump
 PHANTOM/A.I.K/bin/linux/x86_64/loki_tool
 PHANTOM/A.I.K/bin/linux/x86_64/lz4
 arch/arm64/boot/boot.img-zImage
+arch/arm64/boot/dts/exynos7570-rev01.dtsi
 builtime_bytes.txt
 offsets_sizes.txt
 fips_fmp_utils
