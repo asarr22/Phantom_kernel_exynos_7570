@@ -367,7 +367,7 @@ echo "----------------------------------------------"
 echo "$CR_NAME $CR_VERSION Build Script"
 echo "----------------------------------------------"
 PS3='Please select your option (1-10): '
-menuvar=("SM-G570X" "SM-J330X" "SM-G390X" "SM-J710X" "SM-J701X" "SM-G610X" "SM-J400X" "SM-J260X" "Build_All" "Exit")
+menuvar=("SM-G570X" "SM-J330X" "SM-G390X" "SM-J400X" "SM-J260X" "Build_All" "Exit")
 select menuvar in "${menuvar[@]}"
 do
     case $menuvar in
