@@ -17,7 +17,7 @@
 # Main Dir
 CR_DIR=$(pwd)
 # Define toolchan path
-CR_TC=/home/android/too/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-
+CR_TC=/home/runner/asarre/linaro-toolchain-latest/bin/aarch64-linux-gnu-
 # Define proper arch and dir for dts files
 CR_DTS=arch/arm64/boot/dts
 # Define boot.img out dir
@@ -37,7 +37,7 @@ CR_KERNEL=$CR_DIR/arch/arm64/boot/Image
 # Compiled dtb by dtbtool
 CR_DTB=$CR_DIR/boot.img-dtb
 # Kernel Name and Version
-CR_VERSION=V1
+CR_VERSION=V2
 CR_NAME=PhantomKernel
 # Thread count
 CR_JOBS=$(nproc --all)
